@@ -19,8 +19,18 @@ pipeline {
                     sh "ssh ec2-user@172.31.83.74 /opt/tomcat9/bin/shutdown.sh"
                     sh "ssh ec2-user@172.31.83.74 /opt/tomcat9/bin/startup.sh"
                     
+        stage('docker build') {
+            steps {
+                sh "docker build -t adarshnayak/project:0.0.2 ."
+                    
                 }
-            }    
+            }
+        stage('docker push') {
+            steps {
+                sh "docker login -u adarshnayak -p xxxxxxx"
+                sh "docker push adarshnayak/project:0.0.2"
+            }
+        }        
         }
     }
 }
