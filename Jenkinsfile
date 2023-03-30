@@ -32,7 +32,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'HubPwd')]) {
                 
-                sh "docker login -u adarshnayak -p xxxxxxx"
+                    sh "docker login -u adarshnayak -p ${HubPwd}"
                 sh "docker push adarshnayak/project:0.0.2"
                 }
             }
