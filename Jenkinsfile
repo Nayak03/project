@@ -22,5 +22,18 @@ pipeline {
                 }
             }    
         }
+        stage('docker build') {
+            steps {
+                sh "docker build -t adarshnayak/project:0.0.2 ."
+
+                }
+            }    
+         }
+        stage('docker push') {
+            steps {
+                sh "docker login -u adarshnayak -p xxxxxxx"
+                sh "docker push adarshnayak/project:0.0.2"
+            }
+        }        
     }
 }
