@@ -28,7 +28,6 @@ pipeline {
 
                 }
             }    
-         }
         stage('docker push') {
             steps {
                 sh "docker login -u adarshnayak -p xxxxxxx"
@@ -36,3 +35,4 @@ pipeline {
             }
         }        
     }
+}
